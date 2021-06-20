@@ -26,6 +26,9 @@ done.
 - [ ] find what is measure way to post request from frontend.
   - in this case use `form` tag.
   - basic implementation RESTful using django.
+- [ ] review part 4
+  - why use `form` tag.
+  - if not, use JS?
 
 ## Part 5
 
