@@ -6,7 +6,7 @@ done.
 
 ## Part 4
 
-| https://docs.djangoproject.com/ko/3.2/intro/tutorial04/
+> https://docs.djangoproject.com/ko/3.2/intro/tutorial04/
 
 ```html
 <form action="{% url 'polls:vote' question.id %}" method="post"></form>
@@ -32,4 +32,4 @@ done.
 
 ## Part 5
 
-| https://docs.djangoproject.com/ko/3.2/intro/tutorial05/
+> https://docs.djangoproject.com/ko/3.2/intro/tutorial05/
