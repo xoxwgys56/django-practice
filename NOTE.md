@@ -21,6 +21,12 @@ selected_choice = question.choice_set.get(pk=request.POST['choice'])
 
 done.
 
+### TODO
+
+- [ ] find what is measure way to post request from frontend.
+  - in this case use `form` tag.
+  - basic implementation RESTful using django.
+
 ## Part 5
 
 | https://docs.djangoproject.com/ko/3.2/intro/tutorial05/
