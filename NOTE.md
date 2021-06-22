@@ -44,7 +44,7 @@ till now. use GET and POST method only.
 > https://docs.djangoproject.com/ko/3.2/intro/tutorial05/
 
 Let's learn about testing!  
-`django.test.TestCase`를 이용해 유닛테스트를 한다.  
+`django.test.TestCase`를 이용해 유닛테스트를 한다.
 
 ```shell
 # run test
@@ -102,11 +102,11 @@ response.context['latest_question_list']
 
 ## Part 6
 
-add `/static/polls/style.css`. that's all.  
+add `/static/polls/style.css`. that's all.
 
 ## Part 7
 
-modify admin. `fields`를 `fieldsets`로 변경했다.  
+modify admin. `fields`를 `fieldsets`로 변경했다.
 
 > django 예약어인가?
 
@@ -123,11 +123,13 @@ fieldsets = [
 
 ### 관련된 객체 추가
 
-OK, 우리는 Question 관리자 페이지를 가지고 있습니다. 그러나, Question은 여러 개의 Choice들을 가지고 있음에도, admin 페이지는 선택 사항을 표시하지 않습니다. 이것을 해결할 수 있는 2가지 방법이 있습니다.  
+OK, 우리는 Question 관리자 페이지를 가지고 있습니다. 그러나, Question은 여러 개의 Choice들을 가지고 있음에도, admin 페이지는 선택 사항을 표시하지 않습니다. 이것을 해결할 수 있는 2가지 방법이 있습니다.
 
 ```python
 # polls/admin.py
 admin.site.register(Choice)
 ```
 
-> [여기](https://docs.djangoproject.com/ko/3.2/intro/tutorial07/#adding-related-objects)까지 진행함.
+관리자 페이지 커스터마이징.
+
+> [여기](https://docs.djangoproject.com/ko/3.2/intro/reusable-apps/) 진행 중.
