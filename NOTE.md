@@ -30,6 +30,65 @@ done.
   - why use `form` tag.
   - if not, use JS?
 
+till now. use GET and POST method only.
+
 ## Part 5
 
 > https://docs.djangoproject.com/ko/3.2/intro/tutorial05/
+
+Let's learn about testing!  
+`django.test.TestCase`를 이용해 유닛테스트를 한다.  
+
+```shell
+# run test
+$ python manage.py test polls
+
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+F
+======================================================================
+FAIL: test_was_published_recently_with_future_question (polls.tests.QuestionModelTests)
+was_published_recently() returns False for questions whose pub_date
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/dwkim/dw/_project/django-practice/src/polls/tests.py", line 17, in test_was_published_recently_with_future_question
+    self.assertIs(future_question.was_published_recently(), False)
+AssertionError: True is not False
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+```
+
+### Django test client
+
+```shell
+python manage.py shell
+```
+
+```python
+# inside of venv
+from django.test.utils import setup_test_environment
+setup_test_environment()
+
+from django.test import Client
+client = Client()
+
+response = client.get('/')
+# Not Found: /
+response.status_code
+# 404
+
+from django.urls import reverse
+response = client.get(reverse('polls:index'))
+response.status_code
+# 200
+response.content
+# b'\n<ul>\n  \n  <!-- <li><a href="/polls/2/">What&#x27;s that?</a></li> -->\n  <li><a href="/polls/2/">What&#x27;s that?</a></li>\n  \n</ul>\n\n'
+response.context['latest_question_list']
+# <QuerySet [<Question: What's that?>]>
+```
+
+장고에서는 테스트 코드가 비대해지는 것을 우려하지 말라고 말합니다.

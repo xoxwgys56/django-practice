@@ -9,6 +9,14 @@ follow [django official tutorial](https://docs.djangoproject.com/ko/3.2/intro/tu
 This Django project exclude secret key value in `/secret/key.py` file. File name include `.gitignore`.  
 If lost secret key use [django secret key generator](https://djecrety.ir/)
 
+## TODO
+
+- [ ] What is good structured DB
+  - [ ] What is main goal
+- [ ] Implement RESTful API
+- [ ] test with pytest
+- [ ] django typing
+
 ---
 
 ## References
