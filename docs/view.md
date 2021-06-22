@@ -57,7 +57,10 @@ class BookListView(generic.ListView):
 
 ## References
 
-- https://velog.io/@yejin20/DjangoFBV-%EC%99%80-CBV
-- https://dingrr.com/blog/post/djangofbvs-vs-cbvs-%ED%95%A8%EC%88%98%ED%98%95-%EB%B7%B0-vs-%ED%81%B4%EB%9E%98%EC%8A%A4%ED%98%95-%EB%B7%B0
-- https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Generic_views#%EB%B7%B0(%ED%81%B4%EB%9E%98%EC%8A%A4_%EA%B8%B0%EB%B0%98)
-- https://docs.djangoproject.com/en/3.2/topics/class-based-views/generic-display/#generic-views-of-objects
+- basics
+  - https://velog.io/@yejin20/DjangoFBV-%EC%99%80-CBV
+  - https://dingrr.com/blog/post/djangofbvs-vs-cbvs-%ED%95%A8%EC%88%98%ED%98%95-%EB%B7%B0-vs-%ED%81%B4%EB%9E%98%EC%8A%A4%ED%98%95-%EB%B7%B0
+  - https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Generic_views#%EB%B7%B0(%ED%81%B4%EB%9E%98%EC%8A%A4_%EA%B8%B0%EB%B0%98)
+  - https://docs.djangoproject.com/en/3.2/topics/class-based-views/generic-display/#generic-views-of-objects
+- diff about TemplateView vs ListView
+  - https://stackoverflow.com/questions/25335154/what-is-the-difference-between-using-templateview-and-listview-in-django
