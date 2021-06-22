@@ -14,3 +14,4 @@ If lost secret key use [django secret key generator](https://djecrety.ir/)
 ## References
 
 - https://docs.djangoproject.com/ko/3.2/contents/
+- https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Tutorial_local_library_website
