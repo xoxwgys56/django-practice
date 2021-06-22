@@ -1,0 +1,9 @@
+li a {
+  color: #fff;
+  padding: 10% 10%;
+  font-size: 2rem;
+}
+
+body {
+  background: white url("https://source.unsplash.com/random") no-repeat;
+}

@@ -2,6 +2,13 @@
 
 ## Part 1 ~ 3
 
+create supderuser
+
+```plain
+username: admin
+pwd: 1111
+```
+
 done.
 
 ## Part 4
@@ -92,3 +99,35 @@ response.context['latest_question_list']
 ```
 
 장고에서는 테스트 코드가 비대해지는 것을 우려하지 말라고 말합니다.
+
+## Part 6
+
+add `/static/polls/style.css`. that's all.  
+
+## Part 7
+
+modify admin. `fields`를 `fieldsets`로 변경했다.  
+
+> django 예약어인가?
+
+```python
+fields = ['pub_date', 'question_text']
+
+# to change
+
+fieldsets = [
+        (None,               {'fields': ['question_text']}),
+        ('Date information', {'fields': ['pub_date']}),
+    ]
+```
+
+### 관련된 객체 추가
+
+OK, 우리는 Question 관리자 페이지를 가지고 있습니다. 그러나, Question은 여러 개의 Choice들을 가지고 있음에도, admin 페이지는 선택 사항을 표시하지 않습니다. 이것을 해결할 수 있는 2가지 방법이 있습니다.  
+
+```python
+# polls/admin.py
+admin.site.register(Choice)
+```
+
+> [여기](https://docs.djangoproject.com/ko/3.2/intro/tutorial07/#adding-related-objects)까지 진행함.
