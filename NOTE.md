@@ -132,4 +132,6 @@ admin.site.register(Choice)
 
 관리자 페이지 커스터마이징.
 
-> [여기](https://docs.djangoproject.com/ko/3.2/intro/reusable-apps/) 진행 중.
+## 재사용 가능한 앱을 만들기
+
+> 이 패키지는 배포하지 않을 것 입니다.
