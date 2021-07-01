@@ -15,7 +15,8 @@ If lost secret key use [django secret key generator](https://djecrety.ir/)
   - [ ] What is main goal
 - [ ] Implement RESTful API
 - [ ] test with pytest
-- [ ] django typing
+- [x] django typing
+- [ ] deploy on EC2
 
 ---
 

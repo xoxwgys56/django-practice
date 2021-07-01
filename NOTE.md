@@ -135,3 +135,9 @@ admin.site.register(Choice)
 ## 재사용 가능한 앱을 만들기
 
 > 이 패키지는 배포하지 않을 것 입니다.
+
+---
+
+## follow up tutorial
+
+> [Deploy on EC2](https://it-eldorado.tistory.com/106)
