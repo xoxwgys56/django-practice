@@ -1,0 +1,5 @@
+{
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~/.local/share/virtualenvs/opentutorials-BGl0VP3k/bin/black"
+}
