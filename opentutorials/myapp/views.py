@@ -15,7 +15,7 @@ topics = [
 next_id = len(topics) + 1
 
 
-def get_html_template(article_tag):
+def get_html_template(article_tag: str, topic_id: str = None):
     global topics
     ol_content = "".join(
         [
@@ -31,7 +31,15 @@ def get_html_template(article_tag):
             <ol>
             {ol_content}
             </ol>
-            {article_tag}
+            <p>{article_tag}</p>
+            <ul>
+                <li>
+                    <form action='/delete/' method='post' >
+                        <input type='hidden' name='id' value='{topic_id}' />
+                        <input type='submit' value='delete' />
+                    </form>
+                </li>
+            </ul>
         </body>
     </html>
     """
@@ -85,4 +93,17 @@ def read(request: HttpRequest, id: str):
                 <p>{topic['body']}</p>
             """
 
-    return HttpResponse(get_html_template(article))
+    return HttpResponse(get_html_template(article, id))
+
+
+@csrf_exempt
+def delete(request: HttpRequest):
+    global topics
+
+    if request.method == "POST":
+        id = int(request.POST["id"])
+        if not (id in [topic["id"] for topic in topics]):
+            return HttpResponse(f"can not found item include id {id}")
+        else:
+            topics = [topic for topic in topics if topic["id"] != id]
+            return redirect("/")

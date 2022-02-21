@@ -6,4 +6,5 @@ urlpatterns = [
     path("", index),
     path("create/", create),
     path("read/<id>/", read),
+    path("delete/", delete),
 ]
