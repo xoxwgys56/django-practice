@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 topics = [
     {"id": 1, "title": "routing", "body": "routing is.."},
@@ -7,7 +8,7 @@ topics = [
 ]
 
 
-def index(request):
+def get_html_template(article_tag):
     global topics
     ol_content = "".join(
         [
@@ -16,25 +17,51 @@ def index(request):
         ]
     )
 
-    return HttpResponse(
-        f"""
+    return f"""
     <html>
         <body>
             <h1>Django</h1>
             <ol>
             {ol_content}
             </ol>
-            <h2>Welcome</h2>
-            <p>hello, django</p>
+            {article_tag}
         </body>
     </html>
     """
-    )
 
 
+def index(request):
+    article = f"""
+        <h2>Welcome</h2>
+        <p>hello, django</p>
+    """
+    return HttpResponse(get_html_template(article))
+
+
+@csrf_exempt
 def create(request):
-    return HttpResponse("create page")
+    article = f"""
+        <form action="/create/" method="post">
+            <p><input type="text" name="title" placeholder="title" /></p>
+            <p><textarea name="body" placeholder="body" ></textarea></p>
+            <p><input type="submit" /></p>
+        </form>
+    """
+
+    return HttpResponse(get_html_template(article))
 
 
-def read(request):
-    return HttpResponse("read page")
+def read(request, id: str):
+    global topics
+    article = f"""
+        <h2>Not Found</h2>
+        <p>sorry can not found item id {id}</p>
+    """
+    for topic in topics:
+        if topic["id"] == int(id):
+            article = f"""
+                <h2>{topic['title']}</h2>
+                <p>{topic['body']}</p>
+            """
+
+    return HttpResponse(get_html_template(article))
