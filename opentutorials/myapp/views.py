@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from django.shortcuts import redirect, render, HttpResponse
+
+from django.shortcuts import redirect, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 if TYPE_CHECKING:
@@ -24,6 +25,26 @@ def get_html_template(article_tag: str, topic_id: str = None):
         ]
     )
 
+    if topic_id:
+        sub_menu = f"""
+            <ul>
+                <li>
+                    <form action='/delete/' method='post' >
+                        <input type='hidden' name='id' value='{topic_id}' />
+                        <input type='submit' value='delete' />
+                    </form>
+                </li>
+                <li>
+                    <form action='/update/' method='get' >
+                        <input type='hidden' name='id' value='{topic_id}' />
+                        <input type='submit' value='update' />
+                    </form>
+                </li>
+            </ul>
+        """
+    else:
+        sub_menu = ""
+
     return f"""
     <html>
         <body>
@@ -32,20 +53,13 @@ def get_html_template(article_tag: str, topic_id: str = None):
             {ol_content}
             </ol>
             <p>{article_tag}</p>
-            <ul>
-                <li>
-                    <form action='/delete/' method='post' >
-                        <input type='hidden' name='id' value='{topic_id}' />
-                        <input type='submit' value='delete' />
-                    </form>
-                </li>
-            </ul>
+            {sub_menu}
         </body>
     </html>
     """
 
 
-def index(request):
+def index(request: HttpRequest):
     article = f"""
         <h2>Welcome</h2>
         <p>hello, django</p>
@@ -106,4 +120,28 @@ def delete(request: HttpRequest):
             return HttpResponse(f"can not found item include id {id}")
         else:
             topics = [topic for topic in topics if topic["id"] != id]
+            return redirect("/")
+
+
+@csrf_exempt
+def update(request: HttpRequest):
+    global topics
+
+    if request.method == "GET":
+        topic_id = int(request.GET["id"])
+        selected_topic = [topic for topic in topics if topic["id"] == topic_id][0]
+        article = f"""
+            <form>
+                <p><input type='text' name='title' placeholder='title' value='{selected_topic['title']}' /></p>
+                <p><textarea name='body' placeholder='body'>{selected_topic['body']}</textarea></p>
+                <p><input type='submit' /></p>
+            </form>
+        """
+        return HttpResponse(get_html_template(article, topic_id))
+    elif request.method == "POST":
+        id = int(request.POST["id"])
+        if not (id in [topic["id"] for topic in topics]):
+            return HttpResponse(f"can not found item include id {id}")
+        else:
+
             return redirect("/")

@@ -7,4 +7,5 @@ urlpatterns = [
     path("create/", create),
     path("read/<id>/", read),
     path("delete/", delete),
+    path("update/", update),
 ]
