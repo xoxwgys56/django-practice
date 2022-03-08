@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "~/.local/share/virtualenvs/drf-z0Zjb2OA/bin/python3",
+  "editor.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "~.local/share/virtualenvs/drf-z0Zjb2OA/bin/black"
+}
