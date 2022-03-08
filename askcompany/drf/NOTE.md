@@ -74,3 +74,43 @@ data = Post.objects.all()
 # now we can use our custom serializer
 json.dumps(data, cls=MyJSONEncoder, ensure_ascii=False)
 ```
+
+## ModelSerializer
+
+```python
+qs = Post.objects.all()
+serializer = PostModelSerializer(qs, many=True) # NOTE queryset, many=True
+
+serializer.data # combination of  list and OrderedDict
+
+# python.json
+import json
+json_str_string = json.dumps(serializer.data, ensure_ascii=False)
+
+# DRF.json -> convert rule 추가된 encoder
+from rest_framework.renderers import JSONRenderer
+json_utf8_string = JSONRenderer().render(serializer.data)
+```
+
+## Serializer view 처리
+
+`Form`과 유사.
+
+drf 기능 안쓴 경우.
+
+```python
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = '__all__'
+
+# view
+serializer = PostSerializer(data=request.POST)
+if serializer.is_valid():
+    return JsonResponse(serializer.data, status=201)
+else:
+    return JsonResponse(serializer.errors, status=400)
+```
+
+drf 쓴 경우
+
